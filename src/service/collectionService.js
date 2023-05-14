@@ -12,6 +12,7 @@ class CollectionService {
       const savedCollection = await newCollection.save();
       return savedCollection;
     } catch (error) {
+      console.error(error);
       throw new Error('저장에 실패했습니다.');
     }
   }

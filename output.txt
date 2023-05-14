@@ -1,0 +1,7 @@
+
+> geulida-back@1.0.0 start
+> node index.js
+
+connected to mongodb
+http://localhost:3000
+MongoDB connected!
