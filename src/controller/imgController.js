@@ -5,7 +5,7 @@ const imgController = {
     const response = await openai.createImage({
       prompt: prompt,
       n: 1,
-      size: "1024x1024",
+      size: '1024x1024',
     });
     console.log(response.data);
     if (response.data) {
