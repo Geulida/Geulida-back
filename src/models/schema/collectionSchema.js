@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from "mongoose";
 const collectionSchema = new mongoose.Schema({
   color: {
     type: String,
@@ -19,4 +18,4 @@ const collectionSchema = new mongoose.Schema({
   },
 },{ timestamps: true });
 
-module.exports = mongoose.model('Collection', collectionSchema);
+export default mongoose.model('Collection', collectionSchema);

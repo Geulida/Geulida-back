@@ -1,4 +1,4 @@
-import collectionController from './collectionController';
-import imgController from './imgController';
+import collectionController from './collectionController.js';
+import imgController from './imgController.js';
 
 export { collectionController, imgController };

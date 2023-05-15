@@ -1,4 +1,4 @@
-const CollectionService = require('../service/collectionService');
+import CollectionService from "../service/collectionService.js";
 
 const collectionController = {
     async createCollection(req, res) {
@@ -43,4 +43,4 @@ async deleteCollection(req, res) {
   }
   }
 
-module.exports = collectionController
+export default collectionController

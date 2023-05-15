@@ -1,10 +1,9 @@
-const { Router } = require('express');
+import { Router } from "express";
+import { collectionController } from "../controller/index.js";
 const collectionRouter = Router();
-
-const collectionController = require('../controller/collectionController');
 
 collectionRouter.post('/collection', collectionController.createCollection);
 collectionRouter.get('/collection/:id', collectionController.getCollection);
 collectionRouter.delete('/collection/:id', collectionController.deleteCollection);
 
-module.exports = collectionRouter;
+export default collectionRouter;

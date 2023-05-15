@@ -1,4 +1,4 @@
-const Collection = require('../models/schema/collectionSchema');
+import Collection from "../models/schema/collectionSchema.js";
 
 class CollectionService {
   async createCollection(color, style, summary, result) {
@@ -35,4 +35,4 @@ class CollectionService {
   }
 }
 
-module.exports = CollectionService;
+export default CollectionService;
