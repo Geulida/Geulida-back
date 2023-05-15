@@ -1,7 +1,7 @@
-import { Router } from "express";
-import { imgController } from "../controllers/imgController.js";
+import { Router } from 'express';
+import { imgController } from '../controller/index.js';
 const imgRouter = Router();
 
-imgRouter.post("/", imgController.createImg);
+imgRouter.post('/', imgController.createImg);
 
 export default imgRouter;

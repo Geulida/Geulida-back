@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "그리다 백엔드 레포지토리",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
@@ -12,7 +13,9 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^7.1.0"
+    "mongodb": "^5.5.0",
+    "mongoose": "^7.1.1",
+    "openai": "^3.2.1"
   },
   "devDependencies": {
     "prettier": "^2.8.8"

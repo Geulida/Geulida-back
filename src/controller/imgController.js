@@ -1,3 +1,5 @@
+import openai from '../utils/openAi.js';
+
 const imgController = {
   async createImg(res, req) {
     const { color, style, summary } = req.body;
@@ -5,7 +7,7 @@ const imgController = {
     const response = await openai.createImage({
       prompt: prompt,
       n: 1,
-      size: '1024x1024',
+      size: '256x256',
     });
     console.log(response.data);
     if (response.data) {
