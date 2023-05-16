@@ -8,7 +8,8 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 //Module
-import { collectionRouter, imgRouter } from './src/router/index.js';
+import { collectionRouter, imgRouter ,userRouter} from './src/router/index.js';
+
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', collectionRouter);
 app.use('/api', imgRouter);
+app.use('/api',userRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello openAI');
