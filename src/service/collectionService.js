@@ -1,13 +1,13 @@
 import Collection from "../models/schema/collectionSchema.js";
 
 class CollectionService {
-  async createCollection(color, style, summary, result) {
+  async createCollection(color, style, summary, url) {
     try {
       const newCollection = new Collection({
         color,
         style,
         summary,
-        result
+        url
       });
       const savedCollection = await newCollection.save();
       return savedCollection;

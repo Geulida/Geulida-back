@@ -12,7 +12,7 @@ const collectionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  result: {
+  url: {
     type: String,
     required: true
   },
