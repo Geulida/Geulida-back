@@ -8,7 +8,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 //Module
-import { collectionRouter, imgRouter } from './src/router/index.js';
+import { collectionRouter, imgRouter, chatRouter } from './src/router/index.js';
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', collectionRouter);
 app.use('/api', imgRouter);
+app.use('/api', chatRouter);
 // app.use('/api', userRouter);
 
 app.get('/', (req, res) => {
@@ -30,14 +31,12 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(console.log('connected to mongodb'))
-  .catch(console.error());
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function () {
-  console.log('MongoDB connected!');
-});
+  .then(() => {
+    console.log('connected to mongodb');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 // Listen
 app.listen(port, () => {

@@ -1,7 +1,7 @@
 import openai from '../utils/openAi.js';
 
 const imgController = {
-  async createImg(res, req) {
+  async createImg(req, res) {
     const { color, style, summary } = req.body;
     const prompt = `${color}, ${style}, ${summary}`;
     const response = await openai.createImage({
@@ -12,7 +12,7 @@ const imgController = {
     console.log(response.data);
     if (response.data) {
       res.json({
-        imgUrl: response.data.data[0].url,
+        url: response.data.data[0].url,
       });
     }
   },

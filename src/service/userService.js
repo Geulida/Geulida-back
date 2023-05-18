@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
-import User from '../models/schema/userSchema';
-import generateToken from '../utils/token';
+import User from '../models/schema/userSchema.js';
+import { generateToken } from '../utils/token.js';
 
 const Auth = {
   async login(req, res) {
