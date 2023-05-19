@@ -8,7 +8,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 //Module
-import { collectionRouter, imgRouter, chatRouter } from './src/router/index.js';
+import { collectionRouter, imgRouter, chatRouter, userRouter } from './src/router/index.js';
 
 const app = express();
 
@@ -19,6 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', collectionRouter);
 app.use('/api', imgRouter);
 app.use('/api', chatRouter);
+app.use('/api', userRouter);
+
 // app.use('/api', userRouter);
 
 app.get('/', (req, res) => {
@@ -27,10 +29,7 @@ app.get('/', (req, res) => {
 
 //DB
 mongoose
-  .connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect('mongodb+srv://takelucky777:dksk21121234$a@cluster0.cg3wch9.mongodb.net/?retryWrites=true&w=majority')
   .then(() => {
     console.log('connected to mongodb');
   })
