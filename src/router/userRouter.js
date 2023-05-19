@@ -8,5 +8,6 @@ userRouter.post('/login', Auth.login);
 
 //
 userRouter.post('/register', Auth.register);
+userRouter.post('/test', Auth.test);
 
 export default userRouter;
