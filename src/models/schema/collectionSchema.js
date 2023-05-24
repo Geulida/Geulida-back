@@ -4,6 +4,10 @@ const collectionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  hexcode: {
+    type: String,
+    required: true,
+  },
   style: {
     type: String,
     required: true
@@ -16,6 +20,7 @@ const collectionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  
 },{ timestamps: true });
 
 export default mongoose.model('Collection', collectionSchema);

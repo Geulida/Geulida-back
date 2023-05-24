@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 //DB
 mongoose
-  .connect('mongodb+srv://takelucky777:dksk21121234$a@cluster0.cg3wch9.mongodb.net/?retryWrites=true&w=majority')
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log('connected to mongodb');
   })

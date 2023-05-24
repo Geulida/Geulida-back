@@ -1,10 +1,11 @@
 import Collection from "../models/schema/collectionSchema.js";
 
 class CollectionService {
-  async createCollection(color, style, summary, url) {
+  async createCollection(color, hexcode, style, summary, url) {
     try {
       const newCollection = new Collection({
         color,
+        hexcode,
         style,
         summary,
         url

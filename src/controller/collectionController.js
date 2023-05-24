@@ -2,10 +2,10 @@ import CollectionService from "../service/collectionService.js";
 
 const collectionController = {
     async createCollection(req, res) {
-  const { color, style, summary, url } = req.body;
+  const { color, hexcode, style, summary, url } = req.body;
   try {
     const collectionService = new CollectionService();
-    const savedCollection = await collectionService.createCollection(color, style, summary, url);
+    const savedCollection = await collectionService.createCollection(color, hexcode, style, summary, url);
     res.status(201).json(savedCollection);
   } catch (error) {
     res.status(500).json({ error: error.message });
