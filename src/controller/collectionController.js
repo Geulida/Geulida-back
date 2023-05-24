@@ -2,10 +2,10 @@ import CollectionService from "../service/collectionService.js";
 
 const collectionController = {
     async createCollection(req, res) {
-  const { color, style, summary, result } = req.body;
+  const { color, style, summary, url } = req.body;
   try {
     const collectionService = new CollectionService();
-    const savedCollection = await collectionService.createCollection(color, style, summary, result);
+    const savedCollection = await collectionService.createCollection(color, style, summary, url);
     res.status(201).json(savedCollection);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -22,6 +22,24 @@ async getCollection(req, res) {
       } else {
         res.json(collection);
       }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+},
+
+async getCollectionsByPage(req, res) {
+  const { page } = req.query; // /collection?page=2
+  try {
+    const collectionService = new CollectionService();
+    const collectionsPerPage = 12; // 페이지당 컬렉션 수
+    const offset = (page - 1) * collectionsPerPage; // 오프셋 계산
+
+    const collections = await collectionService.getCollectionsPerPage(collectionsPerPage, offset);
+    if (!collections.length) {
+      res.status(404).json({ message: '해당 페이지는 존재하지 않습니다.' });
+    } else {
+      res.json(collections);
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
