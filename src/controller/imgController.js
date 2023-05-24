@@ -13,11 +13,11 @@ const s3 = new AWS.S3({
 const imgController = {
   async createImg(req, res) {
     const { color, style, summary } = req.body;
-    const prompt = `${color}, ${style}, ${summary}`; // 컬러 헥사코드로 테스트하기
+    const prompt = `${style}, ${summary}, ${color}`;
     const response = await openai.createImage({
       prompt: prompt,
       n: 1,
-      size: '256x256',
+      size: '1024x1024',
     });
 
     if (response.data) {
