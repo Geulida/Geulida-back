@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 // Env
 dotenv.config();
@@ -13,6 +14,7 @@ import { collectionRouter, imgRouter, chatRouter, userRouter } from './src/route
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
