@@ -13,7 +13,7 @@ const s3 = new AWS.S3({
 const imgController = {
   async createImg(req, res) {
     const { color, style, summary } = req.body;
-    const prompt = `${style}, ${summary}, ${color}`;
+    const prompt = `${style}, ${summary}, ${color} color`;
     const response = await openai.createImage({
       prompt: prompt,
       n: 1,
