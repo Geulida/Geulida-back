@@ -14,7 +14,12 @@ import { collectionRouter, imgRouter, chatRouter, userRouter } from './src/route
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3001"],
+  })
+)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
