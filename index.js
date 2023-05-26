@@ -16,8 +16,11 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: true,
-    credentials: true,
+    origin: '*', 
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, 
+    maxAge: 86400,
     optionsSuccessStatus: 200,
   })
 );
