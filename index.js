@@ -16,10 +16,10 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: '*', 
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'], 
+    origin: '*',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, 
+    credentials: true,
     maxAge: 86400,
     optionsSuccessStatus: 200,
   })
