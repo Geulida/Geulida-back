@@ -20,6 +20,9 @@ app.use(
     credentials: true,
   })
 );
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*'); // 모든 도메인 허용
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
