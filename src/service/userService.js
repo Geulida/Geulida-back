@@ -35,7 +35,7 @@ const Auth = {
       const salt = await bcrypt.genSalt(saltRounds);
       const hash = await bcrypt.hash(password, salt);
       const newUser = await User.create({ email, name, password: hash });
-      res.send({ message: '회원가입 성공하셨습니다' });
+      res.send({ message: '회원가입에 성공하셨습니다' });
     } catch (err) {
       res.status(400).send(err);
     }

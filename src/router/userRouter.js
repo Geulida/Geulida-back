@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import Auth from '../service/userService.js';
 
-const userRouter = express.Router();
+const userRouter = Router();
 
 //유저 로그인
 userRouter.post('/login', Auth.login);
