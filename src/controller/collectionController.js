@@ -1,5 +1,5 @@
-import CollectionService from "../service/collectionService.js";
-
+import CollectionService from "../services/collectionService.js";
+import { AppError, CommonError } from "../middlewares/errorHandler.js";
 const collectionController = {
     async createCollection(req, res) {
   const { color, hexcode, style, summary, url } = req.body;
@@ -12,18 +12,21 @@ const collectionController = {
   }
 },
 
-async getCollection(req, res) {
+async getCollection(req, res, next) {
   const { id } = req.params;
   try {
     const collectionService = new CollectionService();
     const collection = await collectionService.getCollection(id);
     if (!collection) {
-        res.status(404).json({ message: '존재하지 않는 컬렉션입니다.' });
-      } else {
-        res.json(collection);
+        // res.status(404).json({ message: '존재하지 않는 컬렉션입니다.' });
+        throw new AppError(CommonError.RESOURCE_NOT_FOUND,'존재하지 않는 컬렉션입니다.',404)
       }
+        res.json(collection);
+      
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error)
+    next(error)
+    // res.status(500).json({ error: error.message });
   }
 },
 

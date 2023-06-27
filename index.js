@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 
 //Module
 import { collectionRouter, imgRouter, chatRouter, userRouter } from './src/router/index.js';
+import { errorHandler } from './src/middlewares/errorHandler.js';
 
 const app = express();
 
@@ -33,7 +34,7 @@ app.use('/api', imgRouter);
 app.use('/api', chatRouter);
 app.use('/api', userRouter);
 
-// app.use('/api', userRouter);
+app.use(errorHandler)
 
 app.get('/', (req, res) => {
   res.send('Hello openAI');
