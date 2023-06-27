@@ -22,6 +22,10 @@ export const isAuth = (req, res, next) => {
     }
   } catch (error) {
     console.error(error);
-    throw new AppError(CommonError.TOKEN_EXPIRED_ERROR, '만료되었거나 잘못된 토큰입니다.', 401);
+    if (error instanceof AppError) {
+      throw error;
+    } else {
+      throw new AppError(CommonError.TOKEN_EXPIRED_ERROR, '만료되었거나 잘못된 토큰입니다.', 401);
+    }
   }
 };
