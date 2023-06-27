@@ -10,17 +10,18 @@ export const generateToken = (user) => {
 
 export const isAuth = (req, res, next) => {
   const { authorization } = req.headers;
-
-  if (authorization) {
-    try {
+  try {
+    if (authorization) {
       const token = authorization.slice(7, authorization.length);
       const decode = jwt.verify(token, process.env.SECRET_KEY);
       req.user = decode;
       next();
-    } catch (err) {
-      throw new AppError(CommonError.TOKEN_EXPIRED_ERROR, '잘못된 토큰입니다', 500);
     }
-  } else {
-    res.status(401).json({ message: '발급된 토큰이 없습니다' });
+    if (!authorization) {
+      throw new AppError(CommonError.INVALID_INPUT, '토큰이 입력되지 않았습니다.', 401);
+    }
+  } catch (error) {
+    console.error(error);
+    throw new AppError(CommonError.TOKEN_EXPIRED_ERROR, '만료되었거나 잘못된 토큰입니다.', 401);
   }
 };
