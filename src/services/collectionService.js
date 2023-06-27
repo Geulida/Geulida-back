@@ -16,7 +16,7 @@ class CollectionService {
       return savedCollection;
     } catch (error) {
       console.error(error);
-      throw new Error('저장에 실패했습니다.');
+      throw new AppError(CommonError.UNEXPECTED_ERROR,'저장에 실패했습니다.',500);
     }
   }
 
@@ -27,7 +27,7 @@ class CollectionService {
     .limit(collectionsPerPage);
     return collections;
     } catch (error) {
-    throw new Error('컬렉션 불러오는데 실패했습니다.');
+    throw new AppError(CommonError.UNEXPECTED_ERROR,'컬렉션 불러오는데 실패했습니다.',500);
     }
     }
     
@@ -52,7 +52,7 @@ class CollectionService {
     try {
       await Collection.findByIdAndDelete(id);
     } catch (error) {
-      throw new Error('삭제에 실패했습니다.');
+      throw new AppError(CommonError.UNEXPECTED_ERROR,'삭제에 실패했습니다.',500);
     }
   }
 }
