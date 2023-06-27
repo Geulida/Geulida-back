@@ -1,50 +1,64 @@
-import bcrypt from 'bcrypt';
-const saltRounds = 10;
-
+import bcrypt from 'bcryptjs';
 import User from '../models/schema/userSchema.js';
-import { generateToken } from '../utils/token.js';
 
-const Auth = {
-  async login(req, res) {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (user) {
-      if (bcrypt.compareSync(password, user.password)) {
-        const token = generateToken(JSON.stringify(user));
-        res.send({
-          token,
-        });
-      }
-      return;
-    }
-    res.status(400).send({ message: 'Invalid Email or Password' });
-  },
-
-  async register(req, res) {
+const userService = {
+  createUser: async (userData) => {
     try {
-      const { email, name, password } = req.body;
-
-      const isExist = await User.findOne({ email });
-      if (isExist) {
-        res.status(400).json({
-          message: '이미 존재하는 이메일 입니다',
-        });
-        return;
-      }
-
-      const salt = await bcrypt.genSalt(saltRounds);
-      const hash = await bcrypt.hash(password, salt);
-      const newUser = await User.create({ email, name, password: hash });
-      res.send({ message: '회원가입에 성공하셨습니다' });
-    } catch (err) {
-      res.status(400).send(err);
+      const newUser = new User(userData);
+      await newUser.save();
+      return newUser;
+    } catch (error) {
+      throw new Error('Failed to create user');
     }
   },
 
-  async test(req, res) {
-    const { a } = req.body;
-    res.send(a);
+  getUserByEmail: async (email) => {
+    try {
+      const user = await User.findOne({ email });
+      return user;
+    } catch (error) {
+      throw new Error('Failed to get user');
+    }
+  },
+
+  updateUser: async (userId, userData) => {
+    try {
+      const updatedUser = await User.findByIdAndUpdate({ _id: userId }, userData, {
+        new: true,
+      });
+      return updatedUser;
+    } catch (error) {
+      throw new Error('Failed to update user');
+    }
+  },
+
+  deleteUser: async (userId) => {
+    try {
+      const deletedUser = await User.findByIdAndDelete(userId);
+      return deletedUser;
+    } catch (error) {
+      throw new Error('Failed to delete user');
+    }
+  },
+
+  hashPassword: async (password) => {
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      return hashedPassword;
+    } catch (error) {
+      throw new Error('Failed to hash password');
+    }
+  },
+
+  getUserInfo: async (userId) => {
+    try {
+      const userInfo = await User.findById({ _id: userId });
+      return userInfo;
+    } catch (error) {
+      throw new Error('Failed to fetch user information');
+    }
   },
 };
 
-export default Auth;
+export default userService;
