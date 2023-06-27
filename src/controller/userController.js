@@ -52,63 +52,63 @@ const userController = {
     }
   },
 
-  updateUser: async (req, res) => {
-    const { name, phoneNumber, selfIntro, password } = req.body;
-    const userId = req.user._id;
-    const files = req.files || [];
+  //   updateUser: async (req, res) => {
+  //     const { name, phoneNumber, selfIntro, password } = req.body;
+  //     const userId = req.user._id;
+  //     const files = req.files || [];
 
-    const image = files.map((file) => {
-      return `${file.path}`.replace('public/', '');
-    });
+  //     const image = files.map((file) => {
+  //       return `${file.path}`.replace('public/', '');
+  //     });
 
-    try {
-      const updatedUser = await userService.updateUser(userId, {
-        name,
-        phoneNumber,
-        selfIntro,
-        password,
-        image,
-      });
+  //     try {
+  //       const updatedUser = await userService.updateUser(userId, {
+  //         name,
+  //         phoneNumber,
+  //         selfIntro,
+  //         password,
+  //         image,
+  //       });
 
-      if (!updatedUser) {
-        return res.status(404).json({ error: 'User not found' });
-      }
+  //       if (!updatedUser) {
+  //         return res.status(404).json({ error: 'User not found' });
+  //       }
 
-      res.status(200).json({ message: 'User updated successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  },
+  //       res.status(200).json({ message: 'User updated successfully' });
+  //     } catch (error) {
+  //       res.status(500).json({ error: 'Internal server error' });
+  //     }
+  //   },
 
-  deleteUser: async (req, res) => {
-    const userId = req.user._id;
+  //   deleteUser: async (req, res) => {
+  //     const userId = req.user._id;
 
-    try {
-      const deletedUser = await userService.deleteUser(userId);
+  //     try {
+  //       const deletedUser = await userService.deleteUser(userId);
 
-      if (!deletedUser) {
-        return res.status(404).json({ error: 'User not found' });
-      }
+  //       if (!deletedUser) {
+  //         return res.status(404).json({ error: 'User not found' });
+  //       }
 
-      res.status(200).json({ message: 'User deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  },
+  //       res.status(200).json({ message: 'User deleted successfully' });
+  //     } catch (error) {
+  //       res.status(500).json({ error: 'Internal server error' });
+  //     }
+  //   },
 
-  getMyInfo: async (req, res) => {
-    const userId = req.user._id;
-    try {
-      const userInfo = await userService.getUserInfo(userId);
-      if (userInfo) {
-        res.status(200).json(userInfo);
-      } else {
-        res.status(404).json({ message: '유저를 찾을수 없음' });
-      }
-    } catch (error) {
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  },
+  //   getMyInfo: async (req, res) => {
+  //     const userId = req.user._id;
+  //     try {
+  //       const userInfo = await userService.getUserInfo(userId);
+  //       if (userInfo) {
+  //         res.status(200).json(userInfo);
+  //       } else {
+  //         res.status(404).json({ message: '유저를 찾을수 없음' });
+  //       }
+  //     } catch (error) {
+  //       res.status(500).json({ message: 'Internal server error' });
+  //     }
+  //   },
 };
 
 export default userController;

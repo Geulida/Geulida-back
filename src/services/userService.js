@@ -21,25 +21,25 @@ const userService = {
     }
   },
 
-  updateUser: async (userId, userData) => {
-    try {
-      const updatedUser = await User.findByIdAndUpdate({ _id: userId }, userData, {
-        new: true,
-      });
-      return updatedUser;
-    } catch (error) {
-      throw new Error('Failed to update user');
-    }
-  },
+  // updateUser: async (userId, userData) => {
+  //   try {
+  //     const updatedUser = await User.findByIdAndUpdate({ _id: userId }, userData, {
+  //       new: true,
+  //     });
+  //     return updatedUser;
+  //   } catch (error) {
+  //     throw new Error('Failed to update user');
+  //   }
+  // },
 
-  deleteUser: async (userId) => {
-    try {
-      const deletedUser = await User.findByIdAndDelete(userId);
-      return deletedUser;
-    } catch (error) {
-      throw new Error('Failed to delete user');
-    }
-  },
+  // deleteUser: async (userId) => {
+  //   try {
+  //     const deletedUser = await User.findByIdAndDelete(userId);
+  //     return deletedUser;
+  //   } catch (error) {
+  //     throw new Error('Failed to delete user');
+  //   }
+  // },
 
   hashPassword: async (password) => {
     try {
