@@ -2,11 +2,9 @@ const errorHandler = (err, req, res, next) => {
     if (err instanceof AppError) {
       const { message, name, status } = err;
       const errorResponse = {
-        error: {
           message,
           name,
-          status,
-        },
+          status
       };
       res.status(status).json(errorResponse);
     } else {
