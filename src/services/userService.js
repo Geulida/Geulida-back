@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/schema/userSchema.js';
+import { AppError } from '../middlewares/errorHandler.js';
 
 const userService = {
   createUser: async (userData) => {
@@ -8,7 +9,7 @@ const userService = {
       await newUser.save();
       return newUser;
     } catch (error) {
-      throw new Error('Failed to create user');
+      throw new AppError(CommonError.INVALID_INPUT, '유저를 생성하는데 에러가 발생', 400);
     }
   },
 
@@ -17,7 +18,7 @@ const userService = {
       const user = await User.findOne({ email });
       return user;
     } catch (error) {
-      throw new Error('Failed to get user');
+      throw new AppError(CommonError.INVALID_INPUT, '유저를 가져오는데 에러 발생', 400);
     }
   },
 
