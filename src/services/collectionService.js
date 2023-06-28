@@ -21,20 +21,8 @@ class CollectionService {
         throw error;
       } else {
         throw new AppError(CommonError.UNEXPECTED_ERROR, '컬렉션 생성에 실패했습니다.', 500);
-      }   }
-  }
-
-  async getCollectionsPerPage(collectionsPerPage, offset) {
-    try {
-      const collections = await Collection.find().skip(offset).limit(collectionsPerPage);
-      return collections;
-    } catch (error) {
-      console.error(error);
-      if (error instanceof AppError) {
-        throw error;
-      } else {
-        throw new AppError(CommonError.UNEXPECTED_ERROR, '컬렉션 조회에 실패했습니다.', 500);
-      }}
+      }
+    }
   }
 
   async getCollection(id) {
@@ -43,12 +31,12 @@ class CollectionService {
         // 입력값이 유효한 ObjectId 형식이 아닌 경우 404 에러 반환
         throw new AppError(CommonError.RESOURCE_NOT_FOUND, '존재하지 않는 컬렉션입니다.', 404);
       }
-    
+
       const collection = await Collection.findById(id).exec();
       if (!collection) {
         throw new AppError(CommonError.RESOURCE_NOT_FOUND, '존재하지 않는 컬렉션입니다.', 404);
       }
-    
+
       return collection;
     } catch (error) {
       console.error(error);
@@ -59,7 +47,20 @@ class CollectionService {
       }
     }
   }
-  
+  async getCollectionsPerPage(collectionsPerPage, offset, email) {
+    try {
+      const collections = await Collection.find({ email }).skip(offset).limit(collectionsPerPage);
+
+      return collections;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof AppError) {
+        throw error;
+      } else {
+        throw new AppError(CommonError.UNEXPECTED_ERROR, '컬렉션 조회에 실패했습니다.', 500);
+      }
+    }
+  }
 
   async deleteCollection(id) {
     try {
