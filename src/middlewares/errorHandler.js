@@ -17,6 +17,7 @@ const errorHandler = (err, req, res, next) => {
       super(message);
       this.name = name;
       this.status = status;
+      Object.setPrototypeOf(this, AppError.prototype)
     }
   }
   
