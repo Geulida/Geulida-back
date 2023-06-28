@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/schema/userSchema.js';
-import { AppError } from '../middlewares/errorHandler.js';
+import { AppError, CommonError } from '../middlewares/errorHandler.js';
 
 const userService = {
   createUser: async (userData) => {
