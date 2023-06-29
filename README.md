@@ -39,20 +39,18 @@ openAI를 활용하여 유저가 선호하는 색상과 화풍,<br/>
 ### API 문서
   https://documenter.getpostman.com/view/26758081/2s93kxd6qs#27b7f42a-5755-49ca-a67a-eb2c6d1da442
 ### 기능별 데모 영상
-  <div align="center">
-  <b>회원가입, 로그인</b> <br /><br />
-    <img alt="Sign-Up&Log-In" src="https://github.com/Geulida/Geulida-front/assets/125162787/e19edbe0-5c58-4e71-b34e-05dc790585aa">
-    <br /><br />
-  <b>채팅 기능</b><br /><br />
-    <img alt="Chat" src="https://github.com/Geulida/Geulida-front/assets/125162787/106e2d88-5e44-4ece-bc30-210c15f01ddc">
-    <br /><br />
-  <b>이미지 생성</b><br /><br />
-    <img alt="Create Image" src="https://github.com/Geulida/Geulida-front/assets/125162787/4101d5fd-b9ea-4881-b53d-16439d177124">
-    <br /><br />
-  <b>콜렉션</b><br /><br />
-    <img alt="Collection" src="https://github.com/Geulida/Geulida-front/assets/125162787/40cf1c98-24c3-4b68-bd1e-30907eab9fc5"> <br />
-  </div>
-  <br />
+<b>회원가입, 로그인</b> <br /><br />
+![회원가입, 로그인](https://github.com/Geulida/Geulida-front/assets/71072214/b259964f-c9bb-43bf-8615-23cad74a2052)
+<br /><br />
+<b>채팅 기능</b><br /><br />
+![채팅 기능](https://github.com/Geulida/Geulida-front/assets/71072214/5b2a20af-0071-4ffb-8a77-3c064e509188)
+<br /><br />
+<b>이미지 생성</b><br /><br />
+![이미지 생성](https://github.com/Geulida/Geulida-front/assets/71072214/f041812e-040b-4d50-a7c0-9a656150a9a5)
+<br /><br />
+<b>콜렉션</b><br /><br />
+![콜렉션](https://github.com/Geulida/Geulida-front/assets/71072214/0c3b5bc4-1f0e-41a0-98ee-92097301a49a)
+<br />
   
 ## 기술스택
 |**Tech Stack**|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
